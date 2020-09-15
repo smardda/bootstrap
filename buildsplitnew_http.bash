@@ -1,4 +1,5 @@
 #! /bin/bash
+#version requires username and password every time
 if [ $# -eq 0 ] ; then
 SMROOT=$HOME/smardda
 else
@@ -7,10 +8,8 @@ fi
 VERS=-new
 mkdir $SMROOT
 cd $SMROOT
-for i in smardda-lib smardda-pfc$VERS;do mkdir $i; (cd $i; git init);done
-#for i in smardda-lib smardda-pfc$VERS;do (cd $i; git clone https://git.ccfe.ac.uk/smardda/$i.git);done
-for i in smardda-lib smardda-pfc$VERS;do (cd $i; git remote add ccfe git@git.ccfe.ac.uk:smardda/$i.git);done
-for i in smardda-lib smardda-pfc$VERS;do (cd $i; git pull ccfe);done
+for i in smardda-lib smardda-pfc$VERS;do git clone https://git.ccfe.ac.uk/smardda/$i.git;done
+for i in smardda-lib smardda-pfc$VERS;do (cd $i;git remote add ccfe git@git.ccfe.ac.uk:smardda/$i.git);done
 export SMALIB_DIR=$SMROOT/smardda-lib
 export SMITER_DIR=$SMROOT/smardda-pfc$VERS
 export PATH=$SMITER_DIR/exec:$PATH
