@@ -6,6 +6,7 @@ else
 SMROOT=$HOME/$1
 fi
 VERS=-new
+echo "installation in directory " $SMROOT
 mkdir $SMROOT
 cd $SMROOT
 for i in smardda-lib smardda-pfc$VERS;do mkdir $i; (cd $i; git init);done
