@@ -34,3 +34,6 @@ At work: Ubuntu 20.04
 smardda lib + pfc master + ccfe-smardda-pfc/master + NONE for pfcr
 smardda-old-new  lib + pfc ccfe-smiter/master + ccfe-smardda-pfc/master + master (removal of TEST/jet297-jwallr360-jdiv11 scheduled, .sav exists)
 smardda-new - set up with bootstrap/buildsplitnew.bash main=ccfe-smardda-pfc/master
+
+~/smardda-testradn/bootstrap$ ./buildsplitnew.bash smardda-testradn
+

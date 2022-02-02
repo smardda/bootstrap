@@ -6,10 +6,11 @@ else
 SMROOT=$HOME/$1
 fi
 VERS=-new
-mkdir $SMROOT
+RADN=pfcr
+if [ ! -d $SMROOT ] ; then mkdir $SMROOT ; fi
 cd $SMROOT
-RADN_DIR=pfcr
-SUBDIRS=smardda-lib smardda-pfc$VERS $RADN_DIR
+SUBDIRS="smardda-lib smardda-pfc$VERS $RADN"
+#echo $SUBDIRS;exit
 for i in $SUBDIRS;do mkdir $i; (cd $i; git init);done
 for i in $SUBDIRS;do (cd $i; git remote add ccfe git@git.ccfe.ac.uk:smardda/$i.git);done
 for i in $SUBDIRS;do (cd $i; git pull ccfe);done
@@ -31,6 +32,7 @@ if [[ -n "$RADN_DIR" ]] ; then
   cd $RADN_DIR
   git checkout main
   cd f95
+  ln -s $SMALIB_DIR/config/
   make -f Makefile.antest
   make -f Makefile.powcalr
 fi
