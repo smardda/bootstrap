@@ -31,6 +31,7 @@ if [[ -n "$RADN_DIR" ]] ; then
   ln -s $SMALIB_DIR/config/
   make -f Makefile.antest
   make -f Makefile.powcalr
+  mv antest powcalr $SMITER_DIR/exec
 fi
 echo "*****Now type at the terminal:"
 echo "export SMALIB_DIR=$SMROOT/smardda-lib"
