@@ -15,15 +15,11 @@ export SMALIB_DIR=$SMROOT/smardda-lib
 export SMITER_DIR=$SMROOT/smardda-pfc$VERS
 export PATH=$SMITER_DIR/exec:$PATH
 cd $SMALIB_DIR
-git checkout parallel
-source ./exec/build << @@
-Y
-@@
+git checkout master
+source ./exec/build N
 cd $SMITER_DIR
-git checkout parallel
-source ./exec/build << @@
-Y
-@@
+git checkout main
+source ./exec/build N
 echo "*****Now type at the terminal:"
 echo "export SMALIB_DIR=$SMROOT/smardda-lib"
 echo "export SMITER_DIR=$SMROOT/smardda-pfc$VERS"
