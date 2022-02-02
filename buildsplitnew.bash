@@ -24,10 +24,6 @@ source ./exec/build N
 cd $SMITER_DIR
 git checkout main
 source ./exec/build N
-echo "*****Now type at the terminal:"
-echo "export SMALIB_DIR=$SMROOT/smardda-lib"
-echo "export SMITER_DIR=$SMROOT/smardda-pfc$VERS"
-echo "export PATH=\$SMITER_DIR/exec:\$SMALIB_DIR/exec:\$PATH"
 if [[ -n "$RADN_DIR" ]] ; then
   cd $RADN_DIR
   git checkout main
@@ -36,3 +32,7 @@ if [[ -n "$RADN_DIR" ]] ; then
   make -f Makefile.antest
   make -f Makefile.powcalr
 fi
+echo "*****Now type at the terminal:"
+echo "export SMALIB_DIR=$SMROOT/smardda-lib"
+echo "export SMITER_DIR=$SMROOT/smardda-pfc$VERS"
+echo "export PATH=\$SMITER_DIR/exec:\$SMALIB_DIR/exec:\$PATH"
