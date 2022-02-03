@@ -1,0 +1,10 @@
+To start a new user, these instructions to be emailed to them 
+-------------------------------------------------------------
+# Suppose want to instal repos as subdirectories of smardda-testradn
+# In bash shell
+RADNAME=smardda-testradn
+mkdir $RADNAME
+cd $RADNAME
+git clone git@git.ccfe.ac.uk:/smardda/bootstrap
+cd bootstrap
+./buildsplitnew.bash $RADNAME

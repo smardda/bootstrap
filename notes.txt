@@ -16,7 +16,7 @@ pfcr doc is most up-to-date branch
 hdsgen added intent(in) to decomp (+ general tidy up  of the 4 main programs)
 AFTER MODS
 ------------------------------
-smardda->smardda-all source incl lib + pfc-new develop_waynes_new=ccfe/master  + ccfe-smardda-pfc/master (origin changed to ccfe)
+smardda->smardda-all source incl lib + pfc-new main + main
 smardda-ccfe smiter
 smardda-misc program MISC for neoclassical coeffs
 smardda-ntest lib + pfc-new ccfe/master + ccfe/develop
@@ -26,19 +26,12 @@ smardda-qprog skeleton program QPROG
 smardda-test lib + pfc-new ccfe/parallel (O/D)  + ccfe/parallel
 smardda-training lib + pfc-new parallel (O/D)  + parallel o/d
 
-pfcr doc is most up-to-date
-powelt_m has been messed up in smardda-test=ccfe/parallel branch
+pfcr main is most up-to-date
+(powelt_m has been messed up in smardda-test=ccfe/parallel branch)
 
 At work: Ubuntu 20.04
 --------
 smardda lib + pfc master + ccfe-smardda-pfc/master + NONE for pfcr
 smardda-old-new  lib + pfc ccfe-smiter/master + ccfe-smardda-pfc/master + master (removal of TEST/jet297-jwallr360-jdiv11 scheduled, .sav exists)
 smardda-new - set up with bootstrap/buildsplitnew.bash main=ccfe-smardda-pfc/master
-
-mkdir smardda-testradn
-cd smardda-testradn
-git init
-git remote add -t master ccfe git@git.ccfe.ac.uk:/smardda/bootstrap
-git pull ccfe
-~/smardda-testradn/bootstrap$ ./buildsplitnew.bash smardda-testradn
 
