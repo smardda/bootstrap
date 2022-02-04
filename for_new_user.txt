@@ -1,10 +1,17 @@
-To start a new user, these instructions to be emailed to them 
--------------------------------------------------------------
-# Suppose want to instal repos as subdirectories of smardda-testradn
-# In bash shell
+# To start a new user, these instructions to be emailed to them 
+#-------------------------------------------------------------
+# Suppose you want to instal the SMARDDA repos as subdirectories
+# of a new directory called smardda-testradn
+# relative to current directory. You must be using the Linux bash shell
+# and it is recommended to change (cd) to your home directory. Then,
+# the following sequence of instructions, typed (or cut and pasted to terminal) will
+# instal the powcalr program, capable of calculating energy deposited both
+# by particles and radiation. (Note that the 
+# final Y leads to production of documentation.)
 RADNAME=smardda-testradn
 mkdir $RADNAME
 cd $RADNAME
 git clone git@git.ccfe.ac.uk:/smardda/bootstrap-public
 cd bootstrap-public
-./buildsplitnew.bash $RADNAME
+chmod a+x ./buildsplitnew.bash
+./buildsplitnew.bash $RADNAME Y
