@@ -10,6 +10,7 @@ newdoc=N
 if [ $# -eq 2 ] ; then
 # anything other than Y will prevent doxygen from producing docm
 newdoc=$2
+echo \$newdoc=$newdoc
 fi
 BR=main
 if [ $# -eq 3 ] ; then
