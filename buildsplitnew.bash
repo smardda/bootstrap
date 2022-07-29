@@ -7,7 +7,7 @@ else
 SMROOT=$HOME/$1
 fi
 newdoc=N
-if [ $# -eq 2 ] ; then
+if [ $# -ge 2 ] ; then
 # anything other than Y will prevent doxygen from producing docm
 newdoc=$2
 echo \$newdoc=$newdoc
