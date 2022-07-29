@@ -11,6 +11,11 @@ if [ $# -eq 2 ] ; then
 # anything other than Y will prevent doxygen from producing docm
 newdoc=$2
 fi
+BR=main
+if [ $# -eq 3 ] ; then
+# switch to different branch
+BR=$3
+fi
 # "-new" is the UKAEA version without salome
 VERS=-new
 # radiation version
@@ -24,6 +29,7 @@ cd $SMROOT
 # fetch the following repos
 SUBDIRS="smardda-lib smardda-pfc$VERS $RADN"
 for i in $SUBDIRS;do mkdir $i; (cd $i; git init);done
+echo ""
 for i in $SUBDIRS;do (cd $i; git remote add ccfe git@git.ccfe.ac.uk:smardda/$i.git);done
 for i in $SUBDIRS;do (cd $i; git pull ccfe);done
 export SMALIB_DIR=$SMROOT/smardda-lib
@@ -33,14 +39,14 @@ export RADN_DIR=$SMROOT/$RADN
 export PATH=$SMITER_DIR/exec:$PATH
 # compile and link modules
 cd $SMALIB_DIR
-git checkout main
+git checkout $BR
 source ./exec/build $newdoc
 cd $SMITER_DIR
-git checkout main
+git checkout $BR
 source ./exec/build $newdoc
 if [[ -n "$RADN_DIR" ]] ; then
   cd $RADN_DIR
-  git checkout main
+  git checkout $BR
   cd f95
   # use common configuration
   ln -s $SMALIB_DIR/config/
