@@ -11,7 +11,7 @@
 RADNAME=smardda-testradn
 mkdir $RADNAME
 cd $RADNAME
-git clone git@git.ccfe.ac.uk:/smardda/bootstrap-public
-cd bootstrap-public
+git clone git@git.ccfe.ac.uk:/smardda/bootstrap
+cd bootstrap
 chmod a+x ./buildsplitnew.bash
 ./buildsplitnew.bash $RADNAME Y
