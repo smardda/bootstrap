@@ -1,3 +1,17 @@
+At home: Minisforum
+-------------------
+9/8/23 Ubuntu 22.04
+smardda-iter/ from ITER 5//8/23
+smardda-lib 
+smardda-pfc includes salome and ci_scripts
+smardda-pfc-test copy of smiter-aux
+smardda/ from CCFE gitlab
+bootstrap
+develop
+pfcr
+smardda-lib
+smardda-pfc-new
+
 At home:
 --------
 STATUS 29/1/22 Ubuntu 18.04
