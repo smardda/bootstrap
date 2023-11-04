@@ -9,6 +9,8 @@ fi
 VERS=
 # radiation version
 RADN=pfcr
+# radiation version only on CCFE gitlab at present
+RADN=
 if [ ! -d $SMROOT ] ; then mkdir $SMROOT ; fi
 cd $SMROOT
 # fetch the following repos
