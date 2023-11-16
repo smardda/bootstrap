@@ -1,6 +1,7 @@
 #! /bin/bash
 # download version requiring RSA or similar authentication to have been set up
 # buildsplitnew.bash <root directory, default smardda> <Y/N, default N for no docm> 
+# added argument to build so get optimised gfortran code
 if [ $# -eq 0 ] ; then
 SMROOT=$HOME/smardda
 else
@@ -41,10 +42,10 @@ export PATH=$SMITER_DIR/exec:$PATH
 # compile and link modules
 cd $SMALIB_DIR
 git checkout $BR
-source ./exec/build $newdoc
+source ./exec/build gfortran $newdoc
 cd $SMITER_DIR
 git checkout $BR
-source ./exec/build $newdoc
+source ./exec/build gfortran $newdoc
 if [[ -n "$RADN_DIR" ]] ; then
   cd $RADN_DIR
   git checkout $BR
