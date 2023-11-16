@@ -14,11 +14,11 @@ RADN=
 if [ ! -d $SMROOT ] ; then mkdir $SMROOT ; fi
 cd $SMROOT
 # fetch the following repos
-SUBDIRS="smardda-lib pfc$VERS $RADN"
+SUBDIRS="smalib pfc$VERS $RADN"
 for i in $SUBDIRS;do mkdir $i; (cd $i; git init);done
 for i in $SUBDIRS;do (cd $i; git remote add github git@github.com:smardda/$i.git);done
 for i in $SUBDIRS;do (cd $i; git pull github);done
-export SMALIB_DIR=$SMROOT/smardda-lib
+export SMALIB_DIR=$SMROOT/smalib
 export SMITER_DIR=$SMROOT/pfc$VERS
 export RADN_DIR=$SMROOT/$RADN
 # use executables from just fetched
@@ -44,7 +44,7 @@ fi
 # ensure use just downloaded version
 echo "*****Now type at the terminal:"
 echo "export SMROOT=$SMROOT"
-echo "export SMALIB_DIR=$SMROOT/smardda-lib"
+echo "export SMALIB_DIR=$SMROOT/smalib"
 echo "export SMITER_DIR=$SMROOT/pfc$VERS"
 echo "export PATH=\$SMITER_DIR/exec:\$SMALIB_DIR/exec:\$PATH"
 echo "****For long term use, add to .bashrc"
