@@ -27,7 +27,7 @@ cd
 mkdir $RADNAME
 cd $RADNAME
 git clone git@git.ccfe.ac.uk:smardda/bootstrap-public.git
-cd bootstrap
+cd bootstrap-public
 chmod a+x ./buildsplitnew.bash
 ./buildsplitnew.bash $RADNAME Y
 #
