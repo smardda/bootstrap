@@ -8,10 +8,33 @@
 # instal the powcalr program, capable of calculating energy deposited both
 # by particles and radiation. (Note that the 
 # final Y leads to production of documentation.)
+#
+# PREAMBLE
+# The following packages need to be installed  (texlive -> epstopdf, imagemagick -> convert)
+# and possibly others depending on linux version
+LISTPKG=make gfortran paraview gcc dialog flex doxygen gnuplot texlive-font-utils imagemagick
+## check present
+for i in $LISTPKG; do dpkg -l $i;done
+## optionally instal supporting packages
+for i in $LISTPKG; do sudo apt install $i;done
+# Using ssh to interface to repo, need an RSA key
+# Example of script to generate a RSA key, probably in ~/.ssh/id_rsa.pub
+ssh-keygen -t rsa -b 2048 -C "$NAME"
+#
+# INSTAL SMARDDA
 RADNAME=smardda-testradn
+cd
 mkdir $RADNAME
 cd $RADNAME
-git clone git@git.ccfe.ac.uk:/smardda/bootstrap
+git clone git@git.ccfe.ac.uk:smardda/bootstrap-public.git
 cd bootstrap
 chmod a+x ./buildsplitnew.bash
 ./buildsplitnew.bash $RADNAME Y
+#
+# EXECUTE TEST DECK
+cd $RADNAME
+git clone git@git.ccfe.ac.uk:warter/smiteraux.git
+export HSAUX=$RADNAME/smiteraux
+export HS=$RADNAME/smardda-pfc-new
+# For full testdeck instructions see README, start by executing
+./tests.bash
