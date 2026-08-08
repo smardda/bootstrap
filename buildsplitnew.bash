@@ -14,7 +14,7 @@ cd $SMROOT
 # fetch the following repos
 SUBDIRS="smardda-lib smardda-pfc$VERS $RADN"
 for i in $SUBDIRS;do mkdir $i; (cd $i; git init);done
-for i in $SUBDIRS;do (cd $i; git remote add ccfe git@git.ccfe.ac.uk:smardda/$i.git);done
+for i in $SUBDIRS;do (cd $i; git remote add ccfe git@gitlab.ukaea.uk:smardda/$i.git);done
 for i in $SUBDIRS;do (cd $i; git pull ccfe);done
 export SMALIB_DIR=$SMROOT/smardda-lib
 export SMITER_DIR=$SMROOT/smardda-pfc$VERS
@@ -46,4 +46,4 @@ echo "export SMALIB_DIR=$SMROOT/smardda-lib"
 echo "export SMITER_DIR=$SMROOT/smardda-pfc$VERS"
 echo "export PATH=\$SMITER_DIR/exec:\$SMALIB_DIR/exec:\$PATH"
 echo "****For long term use, add to .bashrc"
-echo "****If developing code, consider downloading git@git.ccfe.ac.uk:smardda/develop.git"
+echo "****If developing code, consider downloading git@gitlab.ukaea.uk:smardda/develop.git"
