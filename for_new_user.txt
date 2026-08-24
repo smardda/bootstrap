@@ -1,16 +1,16 @@
 # To start a new user, these instructions to be emailed to them 
 #-------------------------------------------------------------
 # Suppose you want to instal the SMARDDA repos as subdirectories
-# of a new directory called smardda-testradn
+# of a new directory called smardda-test
 # relative to current directory. You must be using the Linux bash shell
 # and it is recommended to change (cd) to your home directory. Then,
 # the following sequence of instructions, typed (or cut and pasted to terminal) will
-# instal the powcalr program, capable of calculating energy deposited both
+# instal the powcal program, capable of calculating energy deposited both
 # by particles and radiation. (Note that the 
 # final Y leads to production of documentation.)
 #
 # PREAMBLE
-# The following packages need to be installed  (texlive -> epstopdf, imagemagick -> convert)
+# The following packages need to be installed  (texlive for epstopdf, imagemagick for convert)
 # and possibly others depending on linux version
 LISTPKG=make gfortran paraview gcc dialog flex doxygen gnuplot texlive-font-utils imagemagick
 ## check present
@@ -22,19 +22,19 @@ for i in $LISTPKG; do sudo apt install $i;done
 ssh-keygen -t rsa -b 2048 -C "$NAME"
 #
 # INSTAL SMARDDA
-RADNAME=smardda-testradn
+DIRNAME=smardda-test
 cd
-mkdir $RADNAME
-cd $RADNAME
-git clone git@git.ccfe.ac.uk:smardda/bootstrap-public.git
-cd bootstrap-public
+mkdir $DIRNAME
+cd $DIRNAME
+git clone git@github.com:smardda/bootstrap.git
+cd bootstrap
 chmod a+x ./buildsplitnew.bash
-./buildsplitnew.bash $RADNAME Y
+./buildsplitnew.bash $DIRNAME Y
 #
 # EXECUTE TEST DECK
-cd $RADNAME
-git clone git@git.ccfe.ac.uk:warter/smiteraux.git
-export HSAUX=$RADNAME/smiteraux
-export HS=$RADNAME/smardda-pfc-new
+cd $DIRNAME
+git clone git@github.com:smardda/smiteraux.git
+export HSAUX=$DIRNAME/smiteraux
+export HS=$DIRNAME/pfc
 # For full testdeck instructions see README, start by executing
 ./tests.bash

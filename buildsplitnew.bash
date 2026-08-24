@@ -1,7 +1,8 @@
 #! /bin/bash
 # download version requiring RSA or similar authentication to have been set up
 # buildsplitnew.bash <root directory, default smardda> <Y/N, default N for no docm> 
-# added argument to build so get optimised gfortran code
+# optional third argument for name of master/main branch.
+# Argument to build command below implies get optimised, serial gfortran code
 if [ $# -eq 0 ] ; then
 SMROOT=$HOME/smardda
 else
@@ -13,30 +14,30 @@ if [ $# -ge 2 ] ; then
 newdoc=$2
 #echo "\$newdoc=$newdoc"
 fi
-BR=main
+BR=master
 if [ $# -eq 3 ] ; then
 # switch to different branch
 BR=$3
 fi
-# "-new" is the UKAEA version without salome
-VERS=-new
-# radiation version
-RADN=pfcr
+# optional version
+VERS=
+# optional ONE other SMARDDA module repo
+EXTRA=
 echo "Installation in directory " $SMROOT
-echo "Subdirectories smardda-lib and smardda-pfc$VERS" 
+echo "Subdirectories smalib and pfc$VERS" 
 read -p 'OK? (Y/N): ' isok
 if [ "$isok" != "Y" ] ; then exit; fi
 if [ ! -d $SMROOT ] ; then mkdir $SMROOT ; fi
 cd $SMROOT
 # fetch the following repos
-SUBDIRS="smardda-lib smardda-pfc$VERS $RADN"
+SUBDIRS="smalib pfc$VERS $EXTRA"
 for i in $SUBDIRS;do mkdir $i; (cd $i; git init);done
 echo ""
-for i in $SUBDIRS;do (cd $i; git remote add ccfe git@git.ccfe.ac.uk:smardda/$i.git);done
-for i in $SUBDIRS;do (cd $i; git pull ccfe);done
-export SMALIB_DIR=$SMROOT/smardda-lib
-export SMITER_DIR=$SMROOT/smardda-pfc$VERS
-export RADN_DIR=$SMROOT/$RADN
+for i in $SUBDIRS;do (cd $i; git remote add github git@github.com:smardda/$i.git);done
+for i in $SUBDIRS;do (cd $i; git pull github);done
+export SMALIB_DIR=$SMROOT/smalib
+export SMITER_DIR=$SMROOT/pfc$VERS
+export EXTRA_DIR=$SMROOT/$EXTRA
 # use executables from just fetched
 export PATH=$SMITER_DIR/exec:$PATH
 # compile and link modules
@@ -46,20 +47,19 @@ source ./exec/build gfortran $newdoc
 cd $SMITER_DIR
 git checkout $BR
 source ./exec/build gfortran $newdoc
-if [[ -n "$RADN_DIR" ]] ; then
-  cd $RADN_DIR
+if [[ -n "$EXTRA_DIR" ]] ; then
+  cd $EXTRA_DIR
   git checkout $BR
   cd f95
   # use common configuration
   ln -s $SMALIB_DIR/config/
-  # make special executables and place with others
-  make -f Makefile.antest
-  make -f Makefile.powcalr
-  mv antest powcalr $SMITER_DIR/exec
+  # Example of how to make special executables and place with others
+  #eg make -f Makefile.test
+  #eg mv test $SMITER_DIR/exec
 fi
-# ensure use just downloaded version
+# ensure use just-downloaded version
 echo "*****Now type at the terminal:"
 echo "export SMROOT=$SMROOT"
-echo "export SMALIB_DIR=$SMROOT/smardda-lib"
-echo "export SMITER_DIR=$SMROOT/smardda-pfc$VERS"
+echo "export SMALIB_DIR=$SMROOT/smalib"
+echo "export SMITER_DIR=$SMROOT/pfc$VERS"
 echo "export PATH=\$SMITER_DIR/exec:\$SMALIB_DIR/exec:\$PATH"
