@@ -1,0 +1,51 @@
+At home: Minisforum
+-------------------
+9/8/23 Ubuntu 22.04
+smardda-iter/ from ITER 5//8/23
+smardda-lib 
+smardda-pfc includes salome and ci_scripts
+smardda-pfc-test copy of smiter-aux
+smardda/ from CCFE gitlab
+bootstrap
+develop
+pfcr
+smardda-lib
+smardda-pfc-new
+
+At home:
+--------
+STATUS 29/1/22 Ubuntu 18.04
+smardda->smardda-all source incl lib + pfc-new develop_waynes (19) + origin/ccfe-smardda-pfc/master
+smardda-ccfe smiter
+smardda-misc program MISC for neoclassical coeffs
+smardda-ntest lib + pfc-new ccfe/master + ccfe/develop
+smardda-pfc-iter copy of iter repo 
+smardda-pfc-new-ccfe just SMARDDA-PFC ccfe/develop
+smardda-qprog skeleton program QPROG
+smardda-test lib + pfc-new ccfe/parallel + ccfe/parallel
+smardda-training lib + pfc-new parallel + parallel o/d
+
+pfcr doc is most up-to-date branch
+---------------------------
+hdsgen added intent(in) to decomp (+ general tidy up  of the 4 main programs)
+AFTER MODS
+------------------------------
+smardda->smardda-all source incl lib + pfc-new main + main
+smardda-ccfe smiter
+smardda-misc program MISC for neoclassical coeffs
+smardda-ntest lib + pfc-new ccfe/master + ccfe/develop
+smardda-pfc-iter copy of iter repo 
+smardda-pfc-new-ccfe just SMARDDA-PFC ccfe/develop
+smardda-qprog skeleton program QPROG
+smardda-test lib + pfc-new ccfe/parallel (O/D)  + ccfe/parallel
+smardda-training lib + pfc-new parallel (O/D)  + parallel o/d
+
+pfcr main is most up-to-date
+(powelt_m has been messed up in smardda-test=ccfe/parallel branch)
+
+At work: Ubuntu 20.04
+--------
+smardda lib + pfc master + ccfe-smardda-pfc/master + NONE for pfcr
+smardda-old-new  lib + pfc ccfe-smiter/master + ccfe-smardda-pfc/master + master (removal of TEST/jet297-jwallr360-jdiv11 scheduled, .sav exists)
+smardda-new - set up with bootstrap/buildsplitnew.bash main=ccfe-smardda-pfc/master
+
