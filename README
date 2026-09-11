@@ -1,8 +1,8 @@
 To start a new user, these instructions to be emailed to them 
 -------------------------------------------------------------
-# Suppose want to instal repos as subdirectories of smardda-test
+# Suppose want to instal repos as subdirectories of smardda
 # In bash shell
-DIRNAME=smardda-test
+DIRNAME=smardda
 mkdir $DIRNAME
 cd $DIRNAME
 git clone git@github.com:/smardda/bootstrap
