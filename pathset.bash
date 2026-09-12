@@ -2,7 +2,7 @@
 # output commands to be typed on command line to change working smardda version
 # optionally set VERS version of pfc
 # usage pathset.bash [<smardda group name>]
-export SMROOT=~/smardda-test
+export SMROOT=~/smardda
 if [ $# -eq 1 ] ; then
 export SMROOT=$HOME/$1
 fi

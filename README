@@ -1,7 +1,7 @@
 # Guide to installation of principal SMARDDA repos
 #-------------------------------------------------
 # Suppose you want to instal the SMARDDA repos as subdirectories
-# of a new directory called smardda-test
+# of a new directory called smardda
 # relative to current directory. You must be using the Linux bash shell
 # and it is recommended to change (cd) to your home directory. Then,
 # the following sequence of instructions, typed (or cut and pasted to terminal) will
@@ -21,7 +21,7 @@ for i in $LISTPKG; do sudo apt install $i;done
 ssh-keygen -t rsa -b 2048 -C "$NAME"
 #
 # INSTAL SMARDDA
-DIRNAME=smardda-test
+DIRNAME=smardda
 cd
 # skip download of bootstrap repo, if as is probable, it is already present
 if [ ! -d $DIRNAME ] ; then
