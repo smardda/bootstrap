@@ -8,3 +8,14 @@ cd $DIRNAME
 git clone git@github.com:/smardda/bootstrap
 cd bootstrap
 # Follow detailed instructions in README
+#
+# On Windows, use WSL, Ubuntu Linux recommended, for details see
+https://msdn.microsoft.com/en-gb/commandline/wsl/about
+Note that for any bash X-windows-based GUI to work, the Windows 8-10 machine requires XMing to be
+installed upon it, installation well explained in the Windows documentation.
+The bash session commands must commence with
+export DISPLAY=:0
+(Other X-Windows software such as VcXsrv may work equally well or better, experimentation
+may be needed to find the optimum solution.)
+
+

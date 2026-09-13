@@ -37,8 +37,8 @@ chmod a+x ./buildsplitnew.bash
 #
 # EXECUTE TEST DECK 1
 cd $SMROOT
-git clone git@github.com:smardda/smiteraux.git
-export HSAUX=$SMROOT/smiteraux
+git clone git@github.com:smardda/smiteraux1.git
+export HSAUX=$SMROOT/smiteraux1
 export HS=$SMROOT/pfc
 # For brief test-deck instructions see README, test-deck execution by
 ./tests.bash
