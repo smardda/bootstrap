@@ -1,40 +1,19 @@
-# To start a new user, these instructions to be emailed to them 
-#-------------------------------------------------------------
-# Suppose you want to instal the SMARDDA repos as subdirectories
-# of a new directory called smardda-test
-# relative to current directory. You must be using the Linux bash shell
-# and it is recommended to change (cd) to your home directory. Then,
-# the following sequence of instructions, typed (or cut and pasted to terminal) will
-# instal the powcal program, capable of calculating energy deposited both
-# by particles and radiation. (Note that the 
-# final Y leads to production of documentation.)
-#
-# PREAMBLE
-# The following packages need to be installed  (texlive for epstopdf, imagemagick for convert)
-# and possibly others depending on linux version
-LISTPKG=make gfortran paraview gcc dialog flex doxygen gnuplot texlive-font-utils imagemagick libhdf5-dev
-## check present
-for i in $LISTPKG; do dpkg -l $i;done
-## optionally instal supporting packages
-# for i in $LISTPKG; do sudo apt install $i;done
-## Using ssh to interface to repo, need an RSA key
-## Example of script to generate a RSA key, probably in ~/.ssh/id_rsa.pub
-# ssh-keygen -t rsa -b 2048 -C "$NAME"
-#
-# INSTAL SMARDDA
-DIRNAME=smardda-test
-cd
+To start a new user, these instructions to be emailed to them 
+-------------------------------------------------------------
+# Suppose want to instal repos as subdirectories of smardda
+# In local bash shell
+DIRNAME=smardda
 mkdir $DIRNAME
 cd $DIRNAME
-git clone git@github.com:smardda/bootstrap.git
+git clone git@github.com:/smardda/bootstrap
 cd bootstrap
-chmod a+x ./buildsplitnew.bash
-./buildsplitnew.bash $DIRNAME Y
+# Follow detailed instructions in README
 #
-# EXECUTE TEST DECK
-cd $DIRNAME
-git clone git@github.com:smardda/smiteraux.git
-export HSAUX=$DIRNAME/smiteraux
-export HS=$DIRNAME/pfc
-# For full testdeck instructions see README, start by executing
-./tests.bash
+# On Windows, use WSL, Ubuntu Linux recommended, for details see
+https://msdn.microsoft.com/en-gb/commandline/wsl/about
+Note that for any bash X-windows-based GUI to work, the Windows 8-10 machine requires XMing to be
+installed upon it, installation well explained in the Windows documentation.
+The bash session commands must commence with
+export DISPLAY=:0
+(Other X-Windows software such as VcXsrv may work equally well or better, experimentation
+may be needed to find the optimum solution.)

@@ -1,10 +1,60 @@
-To start a new user, these instructions to be emailed to them 
--------------------------------------------------------------
-# Suppose want to instal repos as subdirectories of smardda-test
-# In bash shell
-DIRNAME=smardda-test
-mkdir $DIRNAME
-cd $DIRNAME
-git clone git@github.com:/smardda/bootstrap
-cd bootstrap
-./buildsplitnew.bash $DIRNAME
+# Guide to installation of principal SMARDDA repos
+#-------------------------------------------------
+# Suppose you want to instal the SMARDDA repos as subdirectories
+# of a new directory called smardda
+# relative to current directory. You must be using the Linux bash shell
+# and it is recommended to change (cd) to your home directory. Then,
+# the following sequence of instructions, typed (or cut and pasted to terminal) will
+# instal the powcal program, capable of calculating energy deposited both
+# by particles and radiation.
+#
+# PREAMBLE
+# The following packages need to be installed  (texlive for epstopdf, imagemagick for convert)
+# and possibly others depending on linux version
+LISTPKG=make gfortran paraview gcc dialog flex doxygen gnuplot texlive-font-utils imagemagick
+## check present
+for i in $LISTPKG; do dpkg -l $i;done
+## optionally instal supporting packages
+for i in $LISTPKG; do sudo apt install $i;done
+# Using ssh to interface to repo, need an RSA key
+# Example of script to generate a RSA key, probably in file ~/.ssh/id_rsa.pub
+ssh-keygen -t rsa -b 2048 -C "$NAME"
+#
+# INSTAL SMARDDA
+DIRNAME=smardda
+SMROOT=$HOME/smardda
+cd
+# skip download of bootstrap repo, if as is probable, it is already present
+if [ ! -d $SMROOT ] ; then
+mkdir $SMROOT
+cd $SMROOT
+git clone git@github.com:smardda/bootstrap.git
+fi
+# run script to fetch repos and instal executables, Y gives documentation
+cd $SMROOT/bootstrap
+chmod a+x ./buildsplitnew.bash
+./buildsplitnew.bash $DIRNAME Y
+#
+# EXECUTE TEST DECK 1
+cd $SMROOT
+git clone git@github.com:smardda/smiteraux1.git
+export HSAUX=$SMROOT/smiteraux1
+export HS=$SMROOT/pfc
+# For brief test-deck instructions see README, test-deck execution by
+./tests.bash
+# EXECUTE TEST DECK 2
+cd $SMROOT
+git clone git@github.com:smardda/smiteraux2.git
+export HSAUX2=$SMROOT/smiteraux2
+export HS=$SMROOT/pfc
+# For brief test-deck instructions see README, test-deck execution by
+./tests.bash
+#
+# More test-deck details and graphics for comparison with test output are provided
+# by browser-based documentation, see $HS/doc/srcdoc/html/index.html
+#
+# OTHER FILES
+# buildsplitnew.bash script to fetch repos and instal executables
+# buildsplitnew_http.bash script to fetch repos and instal executables (github password input needed)
+# for_new_user.txt text to be emailed to start new user
+# pathset.bash helps manage multiple versions of smardda 
