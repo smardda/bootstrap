@@ -47,7 +47,7 @@ source ./exec/build gfortran $newdoc
 cd $SMITER_DIR
 git checkout $BR
 source ./exec/build gfortran $newdoc
-if [[ -n "$EXTRA" ]] ; then
+if [[ -n "$EXTRA_DIR" ]] ; then
   cd $EXTRA_DIR
   git checkout $BR
   cd f95

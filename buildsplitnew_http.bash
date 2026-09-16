@@ -1,5 +1,5 @@
 #! /bin/bash
-# download version #version requires username and password every time
+# download version - version requires username and password every time
 # buildsplitnew_http.bash <root directory, default smardda> <Y/N, default N for no docm> 
 # optional third argument for name of master/main branch.
 # Argument to build command below implies get optimised, serial gfortran code
